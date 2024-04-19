@@ -31,7 +31,7 @@ const Login = () => {
         <div className="hero min-h-screen bg-base-200">
             <div className="hero-content flex-col lg:flex-row">
                 <div className="w-1/2 mr-24">
-                    <img className='w-full' src={img} alt="" />
+                    <img className='w-full' src={img} alt="" /> 
                 </div>
                 <div className="card shrink-0 w-1/2 max-w-lg shadow-2xl bg-base-100">
                     <form onSubmit={handleLogin} className="card-body">

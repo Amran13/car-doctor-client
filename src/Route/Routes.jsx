@@ -6,6 +6,7 @@ import Services from "../pages/Services/Services/Services";
 import Contact from "../pages/Contact/Contact/Contact";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
+import Protected from "../pages/Protected/Protected";
 
 const router = createBrowserRouter([
     {
@@ -18,11 +19,11 @@ const router = createBrowserRouter([
         },
         {
             path : '/about',
-            element : <About></About>
+            element : <Protected> <About></About> </Protected>
         },
         {
             path : '/services',
-            element : <Services />
+            element : <Protected> <Services></Services> </Protected>
         },
         {
             path : '/contact',
