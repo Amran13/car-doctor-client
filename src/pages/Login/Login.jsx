@@ -13,7 +13,11 @@ const Login = () => {
         console.log(email, password)
         signInWithEmail(email, password)
         .then(res => {
-            console.log(res)
+            Swal.fire({
+                title: "Logged In!",
+                text: "User has been logged in successfully",
+                icon: "success"
+              });
         })
         .catch(err => {
             Swal.fire({

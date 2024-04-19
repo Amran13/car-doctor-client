@@ -1,17 +1,52 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import logo from '../assets/logo.svg'
 import { Link } from 'react-router-dom';
+import { authContext } from '../Provider/AuthProvider';
+import Swal from 'sweetalert2';
 
 const Navbar = () => {
+    const { logOut, user } = useContext(authContext)
     const navItems = <>
-    <Link to="/">Home</Link>
-    <Link to="/about">About</Link>
-    <Link to="/services">Services</Link>
-    <Link to="/contact">Contact</Link>
-    <Link to="/login">Login</Link>
-    <Link to="/register">Register</Link>
-    
+        <Link to="/">Home</Link>
+        <Link to="/about">About</Link>
+        <Link to="/services">Services</Link>
+        <Link to="/contact">Contact</Link>
+        <Link to="/login">Login</Link>
+        <Link to="/register">Register</Link>
     </>
+    const handleLogOut = () => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "Do you want to Log Out?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, Log Out"
+        })
+            .then((result) => {
+                if (result.isConfirmed) {
+                    logOut()
+                    .then(res => {
+                        console.log(res)
+                        Swal.fire({
+                            title: "Logged Out!",
+                            text: "User has been logged out successfully",
+                            icon: "success"
+                        });
+                    })
+                    .catch(err => {
+                        Swal.fire({
+                            title: "Error!",
+                            text: err,
+                            icon: "error"
+                          });
+                    })
+                }
+            });
+
+
+    }
     return (
         <div className="navbar bg-base-100">
             <div className="navbar-start">
@@ -40,6 +75,10 @@ const Navbar = () => {
                         <span className="badge badge-xs badge-primary indicator-item"></span>
                     </div>
                 </button>
+                {
+                    user ? <button onClick={handleLogOut} className='btn btn-primary'>LogOut</button> : <Link to="/login" className='btn btn-primary'>LogIn</Link>
+                }
+                
             </div>
         </div>
     );
