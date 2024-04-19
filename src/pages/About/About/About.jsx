@@ -7,7 +7,7 @@ const About = () => {
         <div className='flex justify-between my-16'>
             <div className='w-2/5 relative'>
                 <img className='' src={person} alt="" />
-                <img className='w-2/3 absolute border border-8 border-zinc-50 top-48 left-60' src={parts} alt="" />
+                <img className='w-2/3 absolute border-8 border-zinc-50 top-48 left-60' src={parts} alt="" />
             </div>
             <div className='w-3/5 pl-32 space-y-4'>
                 <h3>About Us</h3>
