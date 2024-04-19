@@ -7,7 +7,7 @@ const Service = ({ service }) => {
             <figure><img src={img} alt="Shoes" /></figure>
             <div className="card-body">
                 <h2 className="card-title">{title}</h2>
-                <p>Price : {price} </p>
+                <p className='text-orange-500 font-bold'>Price : ${price} </p>
                 <div className="card-actions justify-end">
                     <button className="btn btn-primary">Buy Now</button>
                 </div>

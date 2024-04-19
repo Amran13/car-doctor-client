@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import SectionHeading from '../../../Shared/SectionHeading';
 import Service from '../Service/Service';
 import L1 from '../../../assets/icons/L1.png'
 import L2 from '../../../assets/icons/L2.png'
@@ -11,8 +12,12 @@ const Services = () => {
             .then(res => res.json())
             .then(data => setServices(data))
     }, [])
+    const sectionName = `Section`
+    const sectionHeading = `Our Section Area`
+    const sectionPara = `the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.`
     return (
         <div>
+            <SectionHeading heading={sectionHeading} name={sectionName} para={sectionPara} ></SectionHeading>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 mt-10'>
                 {
                     services.map(item => <Service key={item._id} service={item}></Service>)
@@ -46,8 +51,8 @@ const Services = () => {
                         <h2 className='text-2xl font-bold'>Liza Street, New York</h2>
                     </div>
                 </div>
-                
-                
+
+
             </div>
         </div>
     );
