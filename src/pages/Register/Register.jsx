@@ -1,15 +1,36 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import img from '../../assets/images/login/login.svg'
 import { Link } from 'react-router-dom';
+import { authContext } from '../../Provider/AuthProvider';
+import Swal from 'sweetalert2';
 
 const Register = () => {
+    const {createUserWithEmail} = useContext(authContext)
+
     const handleRegister = (e) => {
         e.preventDefault()
         const form = e.target
         const name = form.name.value 
         const email = form.email.value
         const password = form.password.value
-        console.log(email, password)
+        console.log(name, email, password)
+        createUserWithEmail(email, password)
+        .then(res => {
+            console.log( 'created User: ', res.user)
+            Swal.fire({
+                title: "User Created!",
+                text: `New User has created ${res.email}`,
+                icon: "success"
+              });
+        })
+        .catch(err => {
+            Swal.fire({
+                title: "Error!",
+                text: err,
+                icon: "error"
+              });
+        })
+
     }
     return (
         <div className="hero min-h-screen bg-base-200">
@@ -24,7 +45,7 @@ const Register = () => {
                             <label className="label">
                                 <span className="label-text">Name</span>
                             </label>
-                            <input type="email" name='name' placeholder="Name" className="input input-bordered" required />
+                            <input type="text" name='name' placeholder="Name" className="input input-bordered" required />
                         </div>
                         <div className="form-control">
                             <label className="label">
