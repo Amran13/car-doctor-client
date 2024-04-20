@@ -8,12 +8,12 @@ import L3 from '../../../assets/icons/L3.png'
 const Services = () => {
     const [services, setServices] = useState([])
     useEffect(() => {
-        fetch('services.json')
+        fetch('http://localhost:5000/services')
             .then(res => res.json())
             .then(data => setServices(data))
     }, [])
-    const sectionName = `Section`
-    const sectionHeading = `Our Section Area`
+    const sectionName = `Service`
+    const sectionHeading = `Our Service Area`
     const sectionPara = `the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.`
     return (
         <div>
