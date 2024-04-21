@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { authContext } from '../../Provider/AuthProvider';
 import Swal from 'sweetalert2';
+import banner from '../../assets/images/checkout/checkout.png'
 
 const CheckOut = () => {
     const {user} = useContext(authContext)
@@ -19,6 +20,7 @@ const CheckOut = () => {
         const custormerBooking = {
             customerName : name,
             serviceDate : date,
+            title,
             service_id,
             phone,
             price,
@@ -49,11 +51,17 @@ const CheckOut = () => {
 
     return (
         <div>
-            <div className="hero min-h-screen bg-base-200">
+            <div className='relative'>
+                <img className='mx-auto w-full ' src={banner} alt="" />
+                <div className='bg-gradient-to-r from-[#151515] h-full text-white absolute top-0'>
+                    <h1 className='text-6xl font-bold mt-28 ml-12'>Checkout Details</h1>
+                </div>
+            </div>
+            <div className="hero my-12 py-8 bg-base-200">
                 <div className="hero-content w-2/3 flex-col">
-            <h2 className='text-3xl font-bold text-center'> Service :  {title} </h2>
                     <div className="card shrink-0 w-full py-12 shadow-2xl bg-base-100">
                         <form onSubmit={handleCheckOut} className="card-body mx-auto space-y-4">
+            <h2 className='text-3xl font-bold text-center mb-6'> Service :  {title} </h2>
                             <div className='flex'>
                                 <div className="form-control mx-2">
                                     <label className="label">
@@ -87,7 +95,7 @@ const CheckOut = () => {
                                     <label className="label">
                                         <span className="label-text">Email</span>
                                     </label>
-                                    <input type="text" name='email' placeholder="email" defaultValue={user?.email} className="input input-bordered" required />
+                                    <input type="text" readOnly name='email' placeholder="email" defaultValue={user?.email} className="input input-bordered" required />
                                 </div>
                             </div>
                             <div className="form-control pt-4">

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import banner from '../../../assets/images/checkout/checkout.png'
 import logo from '../../../assets/logo.svg'
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 
 const ServiceDetails = () => {
     const { _id, service_id, title, price, img, description, facility } = useLoaderData()
@@ -55,9 +55,11 @@ const ServiceDetails = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className='mt-16'>
+                        <div className='mt-16 mx-auto mr-6'>
                             <h1 className='text-4xl text-center font-bold'>Price :  ${price} </h1>
-                            <button className='btn btn-block bg-orange-500 mt-6 hover:bg-orange-600'>Proceed Checkout</button>
+                            <Link to={`/checkout/${_id}`}>
+                                <button className='btn btn-block bg-orange-500 mt-6 hover:bg-orange-600'>Proceed Checkout</button>
+                            </Link>
                         </div>
                     </div>
                 </div>

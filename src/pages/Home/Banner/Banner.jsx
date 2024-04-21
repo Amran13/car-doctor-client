@@ -33,7 +33,7 @@ const Banner = () => {
         <div className='lg:mt-40 ml-12 space-y-6'>
           <h1 className='lg:text-7xl font-bold'>Affordable Price For Car Servicing</h1>
           <p>There are many variations of passages of  available, but the majority have suffered alteration in some form</p>
-          <div className='flex space-x-4'>
+          <div className='flex space-x-4 pt-8'>
             <button className="btn btn-primary">Primary</button>
             <button className="btn btn-outline btn-secondary">Secondary</button>
           </div>

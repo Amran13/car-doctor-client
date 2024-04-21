@@ -8,8 +8,8 @@ const Navbar = () => {
     const { logOut, user } = useContext(authContext)
     const navItems = <>
         <Link to="/">Home</Link>
-        <Link to="/about">About</Link>
         <Link to="/services">Services</Link>
+        <Link to="/checkout-list"> Checkout List </Link>
         <Link to="/contact">Contact</Link>
         <Link to="/login">Login</Link>
         <Link to="/register">Register</Link>

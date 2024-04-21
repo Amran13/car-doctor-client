@@ -9,11 +9,14 @@ import Register from "../pages/Register/Register";
 import Protected from "../pages/Protected/Protected";
 import CheckOut from "../pages/CheckOut/CheckOut";
 import ServiceDetails from "../pages/ServiceDetails/ServiceDetails/ServiceDetails";
+import CheckOutList from "../pages/CheckOutList/CheckOutList";
+import NotFound from "../Shared/NotFound";
 
 const router = createBrowserRouter([
     {
       path: "/",
       element: <Main></Main>,
+      errorElement : <NotFound></NotFound>,
       children : [
         {
             path : '/',
@@ -29,13 +32,17 @@ const router = createBrowserRouter([
         },
         {
           path : '/services/:id',
-          element : <ServiceDetails></ServiceDetails>,
+          element : <Protected><ServiceDetails></ServiceDetails></Protected>,
           loader : ({params}) => fetch(`http://localhost:5000/services/${params.id}`)
         },
         {
           path : '/checkout/:id',
-          element : <CheckOut></CheckOut>,
+          element : <Protected><CheckOut></CheckOut></Protected>,
           loader : ({params}) => fetch(`http://localhost:5000/services/${params.id}`)
+        },
+        {
+          path : '/checkout-list',
+          element : <Protected> <CheckOutList></CheckOutList> </Protected>
         },
         {
             path : '/contact',
